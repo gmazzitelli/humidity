@@ -34,8 +34,8 @@ def boke_history(time, y, xlabe='tempo', ylabel='', title='', legend='', noteboo
 def main():
     
     lastdata = [x for x in os.listdir('./') if "data_sensors_" in x][-1]
-    columns=['timestamp', 'day', 'hour', 'P_in [hP]', 'H_in [%]', 'T_in [C]',  'P_out [hP]', 'H_out [%]', 'T_out [C]', 'T_room [C]', 'H_room [%]', 'D_room [C]', 'P_room [hP]']
-    dtp = pd.read_csv(lastdata, delimiter=' ', skiprows = 1, header = None)
+    columns=['timestamp', 'day', 'hour', 'P_in [hP]', 'H_in [%]', 'T_in [C]',  'P_out [hP]', 'H_out [%]', 'T_out [C]', 'T_room [C]', 'H_room [%]', 'D_room [C]', 'P_room [hP]', 'CF4 %']
+    dtp = pd.read_csv(lastdata, delimiter=' ', skiprows = 1, header = None, na_values='')
     print
     date = [datetime.datetime.strptime(x, '%Y-%m-%d %H:%M:%S') for x in (dtp[1].values+' '+dtp[2].values)]
 
