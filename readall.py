@@ -12,8 +12,12 @@ def read_density(filename='/home/user/Scaricati/density.csv'):
     command = 'tail -1 '+filename+' && echo "" > '+filename
     status, output = subprocess.getstatusoutput(command)
     if status==0:
-        dtmp = output.split(',')
-        data = "{:.2f} {:.2f}".format(float(dtmp[2])-273.15, float(dtmp[3]))
+        try:
+            dtmp = output.split(',')
+            data = "{:.3f} {:.3f}".format(float(dtmp[2])-273.15, float(dtmp[3]))
+        except:
+            print("ERROR: density meter")
+            data = "-1 -1"
     else:
         data = "-1 -1"
     return data
