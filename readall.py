@@ -53,6 +53,8 @@ def dump_Tsensor(url = "192.168.1.126", verbose=False):
                         data['root']['ch2']['aval'], 
                         data['root']['ch3']['aval'], 
                         data['root']['ch4']['aval'])
+        if "Error" in value:
+            value = "-1 -1 -1 -1"
     except:
         print("ERROR reading Tsensor device")
         value = "-1 -1 -1 -1"
